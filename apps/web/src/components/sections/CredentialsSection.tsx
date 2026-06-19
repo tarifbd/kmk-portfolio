@@ -16,7 +16,7 @@ const credentials = [
     institution: 'University of Dhaka',
   },
   {
-    title: 'CA CC · Partly Qualified CA',
+    title: 'CA CC (Partly Qualified)',
     subtitle: 'Chartered Accountancy Track',
     institution: 'ICAB',
   },

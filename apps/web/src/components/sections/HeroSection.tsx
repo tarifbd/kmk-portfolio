@@ -1,220 +1,193 @@
 'use client';
 
-import { Award } from 'lucide-react';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
+import { ArrowUpRight } from 'lucide-react';
+
+const credentials = [
+  { code: 'CA CC', detail: 'Partly Qualified · ICAB' },
+  { code: 'ITP', detail: 'Certified Tax Practitioner · NBR' },
+  { code: 'MBA · BBA', detail: 'Accounting & IS · Univ. of Dhaka' },
+];
+
+const ease = [0.16, 1, 0.3, 1] as const;
 
 export default function HeroSection() {
   return (
-    <section className="min-h-screen grid grid-cols-1 lg:grid-cols-[1.15fr_0.85fr]">
-      {/* LEFT — white + dot grid */}
-      <div
-        className="flex flex-col justify-center px-8 md:px-16 lg:px-20 py-32 bg-white relative"
-        style={{
-          backgroundImage:
-            'radial-gradient(circle, #CBD5E1 1px, transparent 1px)',
-          backgroundSize: '48px 48px',
-        }}
+    <section className="relative min-h-screen flex items-center bg-cream overflow-hidden">
+      {/* Background monogram watermark — editorial signature, not a dot grid */}
+      <span
+        aria-hidden
+        className="pointer-events-none select-none absolute -right-[6%] top-1/2 -translate-y-1/2 font-display font-extrabold leading-none text-navy/[0.03] hidden lg:block"
+        style={{ fontSize: '34rem', letterSpacing: '-0.05em' }}
       >
-        <div className="relative z-10 max-w-[520px]">
-          {/* Eyebrow */}
-          <motion.div
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-            className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-gold-border bg-gold-light mb-8"
-          >
-            <span className="w-2 h-2 rounded-full bg-emerald-500 flex-shrink-0" />
-            <span className="font-mono text-[0.67rem] uppercase tracking-[0.22em] text-gold">
-              Business · Finance · Tax · Compliance Professional
-            </span>
-          </motion.div>
+        KH
+      </span>
 
-          {/* H1 */}
-          <motion.h1
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.1 }}
-            className="font-display font-extrabold text-navy mb-4 leading-[1.07] tracking-[-0.03em]"
-            style={{ fontSize: 'clamp(2.4rem, 4vw, 3.8rem)' }}
-          >
-            K M{' '}
-            <span
-              style={{
-                background: 'linear-gradient(135deg, #A87818, #C9A84C)',
-                WebkitBackgroundClip: 'text',
-                WebkitTextFillColor: 'transparent',
-                backgroundClip: 'text',
-              }}
+      {/* Thin vertical rule, left margin — architectural */}
+      <div className="pointer-events-none absolute left-8 md:left-16 top-0 bottom-0 w-px bg-navy/5 hidden md:block" />
+
+      <div className="relative z-10 w-full max-w-7xl mx-auto px-8 md:px-16 lg:px-20 py-28">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-14 lg:gap-10 items-center">
+          {/* LEFT — content */}
+          <div className="lg:col-span-7">
+            {/* Kicker — editorial, not a pill */}
+            <motion.div
+              initial={{ opacity: 0, y: 14 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, ease }}
+              className="flex items-center gap-3 mb-8"
             >
-              Khadimul
-            </span>{' '}
-            Hasan
-          </motion.h1>
+              <span className="h-px w-12 bg-gold" />
+              <span className="font-mono text-[0.7rem] tracking-[0.28em] uppercase text-smoke">
+                Finance · Tax · Compliance Advisory
+              </span>
+            </motion.div>
 
-          {/* Subtitle */}
-          <motion.p
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-            className="text-[0.95rem] text-smoke mb-5"
-          >
-            Business Advisor · Tax & Compliance Specialist · IT & Automation Enthusiast
-          </motion.p>
+            {/* Name */}
+            <motion.h1
+              initial={{ opacity: 0, y: 18 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7, delay: 0.08, ease }}
+              className="font-display font-extrabold text-navy leading-[0.95] tracking-[-0.04em]"
+              style={{ fontSize: 'clamp(3rem, 6vw, 5.25rem)' }}
+            >
+              K M Khadimul
+              <br />
+              <span className="text-gold">Hasan</span>
+            </motion.h1>
 
-          {/* Description */}
-          <motion.p
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.25 }}
-            className="text-[0.95rem] text-smoke leading-[1.8] mb-8"
-          >
-            I help businesses manage accounting, finance, tax, VAT, customs, and regulatory
-            compliance — with professional advisory support backed by CA and ITP credentials.
-            I also bring IT, AI, and automation expertise to modernize how businesses operate.
-          </motion.p>
+            {/* Role line */}
+            <motion.p
+              initial={{ opacity: 0, y: 14 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.16, ease }}
+              className="mt-7 text-[1.05rem] text-ink font-medium max-w-xl"
+            >
+              Business Advisor &amp; Tax Compliance Specialist — modernising how
+              businesses handle accounting, finance and regulation.
+            </motion.p>
 
-          {/* Credential pills */}
-          <motion.div
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.3 }}
-            className="flex flex-col gap-2 mb-10"
-          >
-            {[
-              'CA CC · Partly Qualified CA',
-              'Certified ITP — Income Tax Lawyer',
-              'MBA & BBA (AIS) — University of Dhaka',
-            ].map((cred) => (
-              <div
-                key={cred}
-                className="inline-flex items-center gap-2.5 px-3.5 py-2 rounded-lg border border-gold-border bg-gold-light w-fit"
+            {/* Description */}
+            <motion.p
+              initial={{ opacity: 0, y: 14 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.22, ease }}
+              className="mt-4 text-[0.95rem] text-smoke leading-[1.85] max-w-xl"
+            >
+              I help businesses across Bangladesh manage tax, VAT, customs and
+              regulatory compliance with credential-backed advisory — then bring
+              IT, AI and automation to make those processes faster and cleaner.
+            </motion.p>
+
+            {/* Credential strip — inline, ruled, no pills */}
+            <motion.div
+              initial={{ opacity: 0, y: 14 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.3, ease }}
+              className="mt-9 flex flex-wrap items-center gap-x-6 gap-y-3"
+            >
+              {credentials.map((c, i) => (
+                <div key={c.code} className="flex items-center gap-6">
+                  <div>
+                    <p className="font-display font-bold text-[0.95rem] text-navy leading-none">
+                      {c.code}
+                    </p>
+                    <p className="font-mono text-[0.62rem] uppercase tracking-[0.14em] text-muted mt-1.5">
+                      {c.detail}
+                    </p>
+                  </div>
+                  {i < credentials.length - 1 && (
+                    <span className="hidden sm:block h-9 w-px bg-navy/10" />
+                  )}
+                </div>
+              ))}
+            </motion.div>
+
+            {/* CTAs */}
+            <motion.div
+              initial={{ opacity: 0, y: 14 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.38, ease }}
+              className="mt-11 flex flex-wrap items-center gap-5"
+            >
+              <a
+                href="#expertise"
+                className="group inline-flex items-center gap-2 px-7 py-3.5 bg-navy text-white font-display font-semibold text-[0.95rem] rounded-full hover:bg-navy-ink transition-colors"
               >
-                <Award size={13} className="text-gold flex-shrink-0" />
-                <span className="font-mono text-[0.67rem] uppercase tracking-[0.16em] text-gold">
-                  {cred}
-                </span>
-              </div>
-            ))}
-          </motion.div>
-
-          {/* CTAs */}
-          <motion.div
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.35 }}
-            className="flex flex-wrap gap-3"
-          >
-            <a
-              href="#expertise"
-              className="px-6 py-3 bg-navy text-white font-display font-bold text-[0.95rem] rounded-xl hover:bg-navy-ink transition-colors"
-            >
-              View Expertise →
-            </a>
-            <a
-              href="#contact"
-              className="px-6 py-3 border border-gold text-gold text-[0.95rem] font-display font-semibold rounded-xl bg-gold-light hover:bg-gold-border/20 transition-colors"
-            >
-              Contact Me
-            </a>
-          </motion.div>
-        </div>
-      </div>
-
-      {/* RIGHT — navy */}
-      <div
-        className="relative flex items-center justify-center py-24 lg:py-0 overflow-hidden"
-        style={{
-          background: '#0B1527',
-          backgroundImage: 'radial-gradient(circle, rgba(255,255,255,0.04) 1px, transparent 1px)',
-          backgroundSize: '48px 48px',
-        }}
-      >
-        {/* Radial glows */}
-        <div
-          className="absolute top-0 right-0 w-72 h-72 rounded-full pointer-events-none"
-          style={{
-            background: 'radial-gradient(circle, rgba(168,120,24,0.18) 0%, transparent 70%)',
-          }}
-        />
-        <div
-          className="absolute bottom-0 left-0 w-64 h-64 rounded-full pointer-events-none"
-          style={{
-            background: 'radial-gradient(circle, rgba(29,80,200,0.18) 0%, transparent 70%)',
-          }}
-        />
-
-        {/* Decorative rings */}
-        <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-          <div className="w-80 h-80 rounded-full border border-white/6" />
-          <div className="absolute w-96 h-96 rounded-full border border-white/[0.04]" />
-        </div>
-
-        {/* Photo frame */}
-        <div className="relative">
-          <div
-            className="w-[220px] h-[275px] rounded-3xl flex items-center justify-center relative overflow-hidden"
-            style={{
-              background: 'rgba(255,255,255,0.09)',
-              border: '2px solid rgba(255,255,255,0.25)',
-              backdropFilter: 'blur(8px)',
-            }}
-          >
-            <Image
-              src="/images/profile.jpg"
-              alt="K M Khadimul Hasan"
-              fill
-              className="object-cover object-center"
-              onError={() => {}}
-              priority
-            />
-            {/* Initials fallback — always shown until image loads */}
-            <div className="absolute inset-0 flex items-center justify-center">
-              <span className="text-5xl font-display font-extrabold text-white/20 select-none">KH</span>
-            </div>
+                Explore Expertise
+                <ArrowUpRight
+                  size={17}
+                  className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+                />
+              </a>
+              <a
+                href="#contact"
+                className="inline-flex items-center gap-2 font-display font-semibold text-[0.95rem] text-navy border-b-2 border-gold pb-0.5 hover:text-gold transition-colors"
+              >
+                Start a conversation
+              </a>
+            </motion.div>
           </div>
 
-          {/* Available badge */}
+          {/* RIGHT — grounded credential calling-card */}
           <motion.div
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.5, delay: 0.6 }}
-            className="hidden md:flex absolute -top-4 -left-4 items-center gap-2 bg-white rounded-xl px-3 py-2 shadow-lg"
+            initial={{ opacity: 0, y: 26 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.2, ease }}
+            className="lg:col-span-5 lg:justify-self-end w-full max-w-sm mx-auto lg:mx-0"
           >
-            <span className="w-2 h-2 rounded-full bg-emerald-500" />
-            <span className="text-[0.7rem] font-mono font-medium text-navy whitespace-nowrap">
-              Open to Advisory Engagements
-            </span>
-          </motion.div>
+            <div className="rounded-[28px] bg-navy p-2.5 shadow-[0_30px_80px_-30px_rgba(11,21,39,0.5)]">
+              {/* Portrait */}
+              <div className="relative aspect-[4/5] rounded-[20px] overflow-hidden bg-navy-ink">
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <span className="font-display font-extrabold text-white/10 text-7xl select-none">
+                    KH
+                  </span>
+                </div>
+                <Image
+                  src="/images/profile.jpg"
+                  alt="K M Khadimul Hasan"
+                  fill
+                  className="object-cover object-center"
+                  priority
+                />
+                {/* Status — editorial corner tag, subtle */}
+                <div className="absolute top-4 left-4 flex items-center gap-2 bg-navy/70 backdrop-blur-sm rounded-full pl-2.5 pr-3.5 py-1.5">
+                  <span className="relative flex h-1.5 w-1.5">
+                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-60" />
+                    <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-emerald-400" />
+                  </span>
+                  <span className="font-mono text-[0.6rem] uppercase tracking-[0.18em] text-white/80">
+                    Available for advisory
+                  </span>
+                </div>
+              </div>
 
-          {/* Badge 1 — CA CC */}
-          <motion.div
-            animate={{ translateY: [0, -8, 0] }}
-            transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut' }}
-            className="hidden md:block absolute -right-12 -top-6 bg-white rounded-xl px-3 py-2.5 shadow-lg border-l-[3px] border-l-gold min-w-[120px]"
-          >
-            <p className="text-[0.78rem] font-display font-bold text-navy">CA CC</p>
-            <p className="text-[0.67rem] text-muted font-mono">Chartered Accountancy</p>
-          </motion.div>
-
-          {/* Badge 2 — ITP */}
-          <motion.div
-            animate={{ translateY: [-8, 0, -8] }}
-            transition={{ duration: 5.5, repeat: Infinity, ease: 'easeInOut' }}
-            className="hidden md:block absolute -left-16 -bottom-4 bg-white rounded-xl px-3 py-2.5 shadow-lg border-l-[3px] border-l-gold min-w-[130px]"
-          >
-            <p className="text-[0.78rem] font-display font-bold text-navy">ITP Certified</p>
-            <p className="text-[0.67rem] text-muted font-mono">Income Tax Practitioner</p>
-          </motion.div>
-
-          {/* Badge 3 — MBA */}
-          <motion.div
-            animate={{ translateY: [0, -8, 0] }}
-            transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut', delay: 0.5 }}
-            className="hidden md:block absolute -right-14 bottom-10 bg-white rounded-xl px-3 py-2.5 shadow-lg border-l-[3px] border-l-brand min-w-[120px]"
-          >
-            <p className="text-[0.78rem] font-display font-bold text-navy">MBA · DU</p>
-            <p className="text-[0.67rem] text-muted font-mono">Accounting & Info Systems</p>
+              {/* Credential ledger */}
+              <div className="px-4 pt-5 pb-3">
+                {credentials.map((c, i) => (
+                  <div
+                    key={c.code}
+                    className={`flex items-baseline justify-between py-2.5 ${
+                      i < credentials.length - 1 ? 'border-b border-white/10' : ''
+                    }`}
+                  >
+                    <span className="font-display font-bold text-[0.92rem] text-white">
+                      {c.code}
+                    </span>
+                    <span className="font-mono text-[0.62rem] uppercase tracking-[0.12em] text-white/45 text-right">
+                      {c.detail}
+                    </span>
+                  </div>
+                ))}
+                <div className="flex items-center gap-2 pt-4 pb-1">
+                  <span className="font-mono text-[0.62rem] uppercase tracking-[0.18em] text-gold">
+                    Dhaka, Bangladesh
+                  </span>
+                </div>
+              </div>
+            </div>
           </motion.div>
         </div>
       </div>
