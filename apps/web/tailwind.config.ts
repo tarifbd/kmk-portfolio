@@ -6,10 +6,13 @@ const config: Config = {
     extend: {
       colors: {
         cream: '#FAFAF7',
+        paper: '#F4F1EB',
         steel: '#E2E8F0',
+        line: '#E5E0D8',
         smoke: '#4A5568',
         muted: '#6B7280',
         light: '#94A3B8',
+        ink2: '#15161A',
         navy: {
           DEFAULT: '#0B1527',
           ink: '#1E2A3B',
@@ -26,6 +29,7 @@ const config: Config = {
         },
       },
       fontFamily: {
+        serif: ['var(--font-serif)', 'Georgia', 'serif'],
         display: ['var(--font-display)', 'sans-serif'],
         body: ['var(--font-body)', 'sans-serif'],
         mono: ['var(--font-mono)', 'monospace'],

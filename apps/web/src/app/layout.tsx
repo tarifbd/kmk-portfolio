@@ -1,7 +1,13 @@
 import type { Metadata } from 'next';
-import { Bricolage_Grotesque, Inter, JetBrains_Mono } from 'next/font/google';
+import { Fraunces, Bricolage_Grotesque, Inter, JetBrains_Mono } from 'next/font/google';
 import './globals.css';
 
+const fraunces = Fraunces({
+  subsets: ['latin'],
+  variable: '--font-serif',
+  weight: ['300', '400', '500', '600'],
+  style: ['normal', 'italic'],
+});
 const bricolage = Bricolage_Grotesque({
   subsets: ['latin'],
   variable: '--font-display',
@@ -37,7 +43,7 @@ export default function RootLayout({
   return (
     <html lang="en" className="scroll-smooth">
       <body
-        className={`${bricolage.variable} ${inter.variable} ${mono.variable} font-body`}
+        className={`${fraunces.variable} ${bricolage.variable} ${inter.variable} ${mono.variable} font-body`}
       >
         {children}
       </body>

@@ -6,8 +6,8 @@ import { Menu, X } from 'lucide-react';
 const links = [
   { href: '#about', label: 'About' },
   { href: '#expertise', label: 'Expertise' },
-  { href: '#integrated', label: 'Integrated Services' },
-  { href: '#it-services', label: 'IT Services' },
+  { href: '#integrated', label: 'Integrated' },
+  { href: '#it-services', label: 'Studio' },
   { href: '#contact', label: 'Contact' },
 ];
 
@@ -23,37 +23,29 @@ export default function Navbar() {
 
   return (
     <nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled
-          ? 'bg-cream/90 backdrop-blur-md border-b border-steel shadow-sm'
-          : 'bg-transparent'
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
+        scrolled ? 'bg-paper/85 backdrop-blur-md border-b border-line' : 'bg-transparent'
       }`}
     >
-      <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
-        <a href="#" className="font-display font-800 text-xl text-navy tracking-tight">
-          KMK<span className="text-gold">.</span>
+      <div className="container-x flex items-center justify-between h-20">
+        <a href="#" className="font-serif text-xl text-ink2 tracking-tight">
+          K M Khadimul<span className="text-gold">.</span>
         </a>
 
-        <div className="hidden md:flex items-center gap-8">
+        <div className="hidden md:flex items-center gap-10">
           {links.map((l) => (
             <a
               key={l.href}
               href={l.href}
-              className="text-[0.875rem] font-body font-medium text-smoke hover:text-navy transition-colors"
+              className="font-mono text-[0.7rem] uppercase tracking-[0.18em] text-muted hover:text-ink2 transition-colors"
             >
               {l.label}
             </a>
           ))}
-          <a
-            href="#contact"
-            className="px-4 py-2 bg-navy text-white text-[0.875rem] font-display font-semibold rounded-lg hover:bg-navy-ink transition-colors"
-          >
-            Contact →
-          </a>
         </div>
 
         <button
-          className="md:hidden p-2 text-navy"
+          className="md:hidden p-2 text-ink2"
           onClick={() => setOpen(!open)}
           aria-label="Toggle menu"
         >
@@ -62,24 +54,17 @@ export default function Navbar() {
       </div>
 
       {open && (
-        <div className="md:hidden bg-cream/95 backdrop-blur-md border-t border-steel px-6 pb-6 pt-4 flex flex-col gap-4">
+        <div className="md:hidden bg-paper border-t border-line px-6 py-6 flex flex-col gap-5">
           {links.map((l) => (
             <a
               key={l.href}
               href={l.href}
-              className="text-base font-medium text-smoke hover:text-navy"
+              className="font-serif text-lg text-ink2"
               onClick={() => setOpen(false)}
             >
               {l.label}
             </a>
           ))}
-          <a
-            href="#contact"
-            className="px-4 py-2.5 bg-navy text-white text-sm font-display font-semibold rounded-lg text-center"
-            onClick={() => setOpen(false)}
-          >
-            Contact →
-          </a>
         </div>
       )}
     </nav>

@@ -1,7 +1,8 @@
 {
   "permissions": {
     "allow": [
-      "PowerShell(Get-ChildItem \"C:\\\\Projects\\\\kmk-portfolio\" -Recurse -Name | Where-Object { $_ -notmatch \"node_modules|\\\\.next|dist|\\\\.pnpm\" } | Sort-Object | Select-Object -First 80)"
+      "PowerShell(Get-ChildItem \"C:\\\\Projects\\\\kmk-portfolio\" -Recurse -Name | Where-Object { $_ -notmatch \"node_modules|\\\\.next|dist|\\\\.pnpm\" } | Sort-Object | Select-Object -First 80)",
+      "WebFetch(domain:halston-architecture-template.webflow.io)"
     ]
   }
 }

@@ -1,35 +1,23 @@
 interface SectionLabelProps {
   children: string;
-  variant?: 'gold' | 'blue' | 'blend';
+  index?: string;
+  light?: boolean;
 }
 
 export default function SectionLabel({
   children,
-  variant = 'gold',
+  index,
+  light = false,
 }: SectionLabelProps) {
-  const colorMap = {
-    gold: 'text-gold',
-    blue: 'text-brand',
-    blend: '',
-  };
-
-  if (variant === 'blend') {
-    return (
-      <p
-        className="section-label"
-        style={{
-          background: 'linear-gradient(135deg, #A87818, #1D50C8)',
-          WebkitBackgroundClip: 'text',
-          WebkitTextFillColor: 'transparent',
-          backgroundClip: 'text',
-        }}
-      >
-        {children}
-      </p>
-    );
-  }
-
   return (
-    <p className={`section-label ${colorMap[variant]}`}>{children}</p>
+    <div
+      className={`eyebrow ${light ? 'text-white/50' : ''}`}
+    >
+      {index && <span className={light ? 'text-white/70' : 'text-ink2'}>({index})</span>}
+      <span
+        className={`h-px w-8 ${light ? 'bg-white/25' : 'bg-line'}`}
+      />
+      {children}
+    </div>
   );
 }

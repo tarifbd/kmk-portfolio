@@ -4,9 +4,11 @@
 
 :root {
   --cream:   #FAFAF7;
+  --paper:   #F4F1EB;
   --white:   #FFFFFF;
   --navy:    #0B1527;
   --ink:     #1E2A3B;
+  --ink2:    #15161A;
   --smoke:   #4A5568;
   --muted:   #6B7280;
   --light:   #94A3B8;
@@ -14,52 +16,45 @@
   --goldl:   #FEFAEE;
   --goldbdr: #E4C96B;
   --blue:    #1D50C8;
-  --bluel:   #EFF6FF;
-  --bluebdr: #BFDBFE;
+  --line:    #E5E0D8;
   --steel:   #E2E8F0;
 }
 
 @layer base {
   html { scroll-behavior: smooth; }
-  body { @apply bg-cream font-body text-navy antialiased; }
-  h1, h2, h3, h4 { @apply font-display; }
-  ::selection { @apply bg-gold-light text-navy; }
+  body { @apply bg-paper font-body text-ink2 antialiased; }
+  h1, h2, h3, h4 { @apply font-serif; }
+  ::selection { @apply bg-navy text-cream; }
 }
 
 @layer components {
-  .finance-card {
-    @apply bg-white border border-steel border-l-[3px] border-l-gold
-           rounded-r-2xl p-6 transition-all duration-200 cursor-default;
-  }
-  .finance-card:hover {
-    @apply border-gold-border translate-x-1 shadow-[0_6px_24px_rgba(168,120,24,.1)];
+  /* Editorial section eyebrow — numbered, ruled */
+  .eyebrow {
+    @apply font-mono text-[0.7rem] uppercase tracking-[0.28em] text-muted flex items-center gap-3;
   }
 
-  .it-card {
-    @apply bg-white border border-steel border-l-[3px] border-l-brand
-           rounded-r-2xl p-6 transition-all duration-200 cursor-default;
+  /* Display heading scale */
+  .display-xl {
+    @apply font-serif font-light tracking-[-0.02em] leading-[0.98];
+    font-size: clamp(2.6rem, 6vw, 5rem);
   }
-  .it-card:hover {
-    @apply border-brand-border translate-x-1 shadow-[0_6px_24px_rgba(29,80,200,.08)];
+  .display-lg {
+    @apply font-serif font-light tracking-[-0.02em] leading-[1.02];
+    font-size: clamp(2rem, 4vw, 3.4rem);
   }
 
-  .blend-card {
-    @apply relative bg-white border border-steel rounded-2xl p-6
-           transition-all duration-200 cursor-default overflow-hidden;
+  /* Minimal editorial card — hairline, no heavy color borders */
+  .edge-card {
+    @apply relative border-t border-line pt-7 transition-colors duration-300;
   }
-  .blend-card::before {
-    content: '';
-    @apply absolute top-0 left-0 right-0 h-[3px] opacity-0 transition-opacity duration-300;
-    background: linear-gradient(90deg, #A87818, #1D50C8);
-    border-radius: 16px 16px 0 0;
-  }
-  .blend-card:hover {
-    @apply -translate-y-1 shadow-[0_8px_28px_rgba(0,0,0,.08)] border-transparent;
-  }
-  .blend-card:hover::before { @apply opacity-100; }
+  .edge-card:hover { @apply border-ink2; }
 
-  .section-label {
-    @apply font-mono text-[0.67rem] uppercase tracking-[0.22em] mb-3 flex items-center gap-2;
+  /* Quiet arrow link */
+  .arrow-link {
+    @apply inline-flex items-center gap-2 font-display font-medium text-ink2
+           border-b border-ink2/30 pb-1 transition-colors hover:border-ink2;
   }
-  .section-label::before { content: '◈'; font-size: 0.78em; }
+
+  .section-pad { @apply py-24 md:py-32 lg:py-40; }
+  .container-x { @apply max-w-[1240px] mx-auto px-6 md:px-12 lg:px-16; }
 }

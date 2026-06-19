@@ -1,58 +1,37 @@
 'use client';
 
-import { Award } from 'lucide-react';
 import AnimatedSection from '@/components/ui/AnimatedSection';
 import SectionLabel from '@/components/ui/SectionLabel';
 
 const credentials = [
-  {
-    title: 'MBA',
-    subtitle: 'Accounting & Information Systems',
-    institution: 'University of Dhaka',
-  },
-  {
-    title: 'BBA',
-    subtitle: 'Accounting & Information Systems',
-    institution: 'University of Dhaka',
-  },
-  {
-    title: 'CA CC (Partly Qualified)',
-    subtitle: 'Chartered Accountancy Track',
-    institution: 'ICAB',
-  },
-  {
-    title: 'Certified ITP',
-    subtitle: 'Income Tax Practitioner (Authorized Tax Lawyer)',
-    institution: 'NBR Bangladesh',
-  },
+  { title: 'MBA — Accounting & Information Systems', institution: 'University of Dhaka' },
+  { title: 'BBA — Accounting & Information Systems', institution: 'University of Dhaka' },
+  { title: 'CA CC (Partly Qualified)', institution: 'ICAB — Chartered Accountancy Track' },
+  { title: 'Certified ITP — Income Tax Practitioner', institution: 'NBR Bangladesh — Authorized Tax Lawyer' },
 ];
 
 export default function CredentialsSection() {
   return (
-    <section className="py-24 px-6 bg-cream">
-      <div className="max-w-7xl mx-auto">
+    <section className="section-pad bg-cream">
+      <div className="container-x">
         <AnimatedSection>
-          <SectionLabel>Academic & Professional Background</SectionLabel>
-          <h2
-            className="font-display font-extrabold text-navy mb-12 tracking-[-0.03em]"
-            style={{ fontSize: 'clamp(1.8rem, 3vw, 2.5rem)' }}
-          >
-            Qualifications & Credentials
+          <SectionLabel index="02">Academic & Professional Background</SectionLabel>
+          <h2 className="display-lg text-ink2 mt-10 max-w-2xl">
+            Qualifications &amp; credentials.
           </h2>
         </AnimatedSection>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+        <div className="mt-16 border-t border-line">
           {credentials.map((c, i) => (
-            <AnimatedSection key={c.title} delay={i * 0.08}>
-              <div className="bg-white rounded-2xl border border-steel p-6 hover:border-gold-border transition-all duration-200 h-full">
-                <div className="w-10 h-10 rounded-xl bg-gold-light flex items-center justify-center mb-4">
-                  <Award size={18} className="text-gold" />
-                </div>
-                <h3 className="text-[0.93rem] font-display font-bold text-navy mb-1">
+            <AnimatedSection key={c.title} delay={i * 0.06}>
+              <div className="group grid grid-cols-1 md:grid-cols-12 gap-4 items-baseline py-8 border-b border-line transition-colors">
+                <span className="md:col-span-1 font-mono text-[0.7rem] text-muted tracking-widest">
+                  {String(i + 1).padStart(2, '0')}
+                </span>
+                <h3 className="md:col-span-7 font-serif font-normal text-[1.5rem] leading-tight text-ink2 group-hover:text-gold transition-colors">
                   {c.title}
                 </h3>
-                <p className="text-[0.82rem] text-smoke mb-2 leading-snug">{c.subtitle}</p>
-                <p className="text-[0.72rem] font-mono uppercase tracking-wide text-gold">
+                <p className="md:col-span-4 font-mono text-[0.72rem] uppercase tracking-[0.14em] text-muted md:text-right">
                   {c.institution}
                 </p>
               </div>

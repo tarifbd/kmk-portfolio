@@ -8,131 +8,57 @@ interface Experience {
   role: string;
   company: string;
   type: string;
-  bullets: string[];
+  detail: string;
 }
 
 const experiences: Experience[] = [
-  {
-    current: true,
-    role: 'CTO & Project Coordinator',
-    company: 'Inception23',
-    type: 'Enterprise AI & Software Integration Company',
-    bullets: [
-      'Leading AI-driven software and digital transformation projects.',
-      'Bridging finance, compliance, and technology for enterprise clients.',
-    ],
-  },
-  {
-    role: 'Software & Technology',
-    company: 'Brain Station 23',
-    type: 'Software Development Company',
-    bullets: [
-      'Technology exposure — software products, IT-driven processes, digital solutions.',
-    ],
-  },
-  {
-    role: 'Senior Officer',
-    company: 'Agrani Bank',
-    type: 'State-owned Commercial Bank',
-    bullets: [
-      'Banking operations, commercial credit, trade finance, regulatory compliance.',
-    ],
-  },
-  {
-    role: 'Audit & Advisory',
-    company: 'KPMG Bangladesh',
-    type: 'Big Four Professional Services Firm',
-    bullets: [
-      'Audit, advisory, compliance across banking, manufacturing, services.',
-    ],
-  },
-  {
-    role: 'Audit & Advisory',
-    company: 'ACNABIN',
-    type: 'Chartered Accountancy Firm',
-    bullets: [
-      'Statutory audit, tax compliance, financial reporting, CA articleship.',
-    ],
-  },
+  { current: true, role: 'CTO & Project Coordinator', company: 'Inception23', type: 'Enterprise AI & Software Integration', detail: 'Leading AI-driven software and digital transformation — bridging finance, compliance and technology for enterprise clients.' },
+  { role: 'Software & Technology', company: 'Brain Station 23', type: 'Software Development Company', detail: 'Technology exposure — software products, IT-driven processes, digital solutions.' },
+  { role: 'Senior Officer', company: 'Agrani Bank', type: 'State-owned Commercial Bank', detail: 'Banking operations, commercial credit, trade finance, regulatory compliance.' },
+  { role: 'Audit & Advisory', company: 'KPMG Bangladesh', type: 'Big Four Professional Services', detail: 'Audit, advisory and compliance across banking, manufacturing and services.' },
+  { role: 'Audit & Advisory', company: 'ACNABIN', type: 'Chartered Accountancy Firm', detail: 'Statutory audit, tax compliance, financial reporting, CA articleship.' },
 ];
 
 export default function ExperienceSection() {
   return (
-    <section className="py-24 px-6 bg-cream">
-      <div className="max-w-4xl mx-auto">
+    <section className="section-pad bg-cream">
+      <div className="container-x">
         <AnimatedSection>
-          <SectionLabel>Professional Journey</SectionLabel>
-          <h2
-            className="font-display font-extrabold text-navy mb-3 tracking-[-0.03em]"
-            style={{ fontSize: 'clamp(1.8rem, 3vw, 2.5rem)' }}
-          >
-            Work Experience
+          <SectionLabel index="07">Professional Journey</SectionLabel>
+          <h2 className="display-lg text-ink2 mt-10 max-w-2xl">
+            Selected <span className="italic text-gold">experience.</span>
           </h2>
-          <p className="text-smoke text-[0.95rem] mb-16">
-            A career spanning Big Four, banking, CA practice, software, and enterprise AI.
-          </p>
         </AnimatedSection>
 
-        <div className="relative">
-          {/* Gradient vertical line */}
-          <div
-            className="absolute left-[15px] top-0 bottom-0 w-[2px]"
-            style={{
-              background:
-                'linear-gradient(to bottom, #A87818 0%, #E2E8F0 50%, #1D50C8 100%)',
-            }}
-          />
-
-          <div className="space-y-10 pl-12">
-            {experiences.map((exp, i) => (
-              <AnimatedSection key={`${exp.company}-${i}`} delay={i * 0.08}>
-                <div className="relative">
-                  {/* Dot */}
-                  <div
-                    className={`absolute -left-[49px] top-1 w-[14px] h-[14px] rounded-full border-2 ${
-                      exp.current
-                        ? 'bg-gold border-gold'
-                        : 'bg-cream border-steel'
-                    }`}
-                  />
-
+        <div className="mt-16 border-t border-line">
+          {experiences.map((exp, i) => (
+            <AnimatedSection key={`${exp.company}-${i}`} delay={i * 0.05}>
+              <div className="group grid grid-cols-1 md:grid-cols-12 gap-y-3 gap-x-6 py-9 border-b border-line">
+                <div className="md:col-span-3 flex items-center gap-3">
+                  <span className="font-mono text-[0.68rem] text-muted tracking-widest">
+                    {String(experiences.length - i).padStart(2, '0')}
+                  </span>
                   {exp.current && (
-                    <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-gold-light border border-gold-border text-[0.67rem] font-mono uppercase tracking-widest text-gold mb-2">
-                      <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
+                    <span className="font-mono text-[0.6rem] uppercase tracking-[0.18em] text-gold">
                       Current
                     </span>
                   )}
-                  <h3 className="text-[0.97rem] font-display font-bold text-navy mb-0.5">
-                    {exp.role} —{' '}
-                    <span
-                      style={{
-                        background: exp.current
-                          ? 'linear-gradient(135deg, #A87818, #C9A84C)'
-                          : undefined,
-                        WebkitBackgroundClip: exp.current ? 'text' : undefined,
-                        WebkitTextFillColor: exp.current ? 'transparent' : undefined,
-                        backgroundClip: exp.current ? 'text' : undefined,
-                        color: exp.current ? undefined : '#1D50C8',
-                      }}
-                    >
-                      {exp.company}
-                    </span>
+                </div>
+                <div className="md:col-span-5">
+                  <h3 className="font-serif text-[1.5rem] leading-tight text-ink2 group-hover:text-gold transition-colors">
+                    {exp.company}
                   </h3>
-                  <p className="text-[0.78rem] font-mono uppercase tracking-wide text-muted mb-3">
+                  <p className="text-[0.85rem] text-smoke mt-1">{exp.role}</p>
+                  <p className="font-mono text-[0.62rem] uppercase tracking-[0.14em] text-muted mt-1">
                     {exp.type}
                   </p>
-                  <ul className="space-y-1">
-                    {exp.bullets.map((b, j) => (
-                      <li key={j} className="text-[0.88rem] text-smoke flex gap-2">
-                        <span className="text-steel mt-1 flex-shrink-0">→</span>
-                        {b}
-                      </li>
-                    ))}
-                  </ul>
                 </div>
-              </AnimatedSection>
-            ))}
-          </div>
+                <p className="md:col-span-4 text-[0.88rem] text-smoke leading-[1.75]">
+                  {exp.detail}
+                </p>
+              </div>
+            </AnimatedSection>
+          ))}
         </div>
       </div>
     </section>
