@@ -1,0 +1,65 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --cream:   #FAFAF7;
+  --white:   #FFFFFF;
+  --navy:    #0B1527;
+  --ink:     #1E2A3B;
+  --smoke:   #4A5568;
+  --muted:   #6B7280;
+  --light:   #94A3B8;
+  --gold:    #A87818;
+  --goldl:   #FEFAEE;
+  --goldbdr: #E4C96B;
+  --blue:    #1D50C8;
+  --bluel:   #EFF6FF;
+  --bluebdr: #BFDBFE;
+  --steel:   #E2E8F0;
+}
+
+@layer base {
+  html { scroll-behavior: smooth; }
+  body { @apply bg-cream font-body text-navy antialiased; }
+  h1, h2, h3, h4 { @apply font-display; }
+  ::selection { @apply bg-gold-light text-navy; }
+}
+
+@layer components {
+  .finance-card {
+    @apply bg-white border border-steel border-l-[3px] border-l-gold
+           rounded-r-2xl p-6 transition-all duration-200 cursor-default;
+  }
+  .finance-card:hover {
+    @apply border-gold-border translate-x-1 shadow-[0_6px_24px_rgba(168,120,24,.1)];
+  }
+
+  .it-card {
+    @apply bg-white border border-steel border-l-[3px] border-l-brand
+           rounded-r-2xl p-6 transition-all duration-200 cursor-default;
+  }
+  .it-card:hover {
+    @apply border-brand-border translate-x-1 shadow-[0_6px_24px_rgba(29,80,200,.08)];
+  }
+
+  .blend-card {
+    @apply relative bg-white border border-steel rounded-2xl p-6
+           transition-all duration-200 cursor-default overflow-hidden;
+  }
+  .blend-card::before {
+    content: '';
+    @apply absolute top-0 left-0 right-0 h-[3px] opacity-0 transition-opacity duration-300;
+    background: linear-gradient(90deg, #A87818, #1D50C8);
+    border-radius: 16px 16px 0 0;
+  }
+  .blend-card:hover {
+    @apply -translate-y-1 shadow-[0_8px_28px_rgba(0,0,0,.08)] border-transparent;
+  }
+  .blend-card:hover::before { @apply opacity-100; }
+
+  .section-label {
+    @apply font-mono text-[0.67rem] uppercase tracking-[0.22em] mb-3 flex items-center gap-2;
+  }
+  .section-label::before { content: '◈'; font-size: 0.78em; }
+}

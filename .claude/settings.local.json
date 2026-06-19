@@ -1,0 +1,7 @@
+{
+  "permissions": {
+    "allow": [
+      "PowerShell(Get-ChildItem \"C:\\\\Projects\\\\kmk-portfolio\" -Recurse -Name | Where-Object { $_ -notmatch \"node_modules|\\\\.next|dist|\\\\.pnpm\" } | Sort-Object | Select-Object -First 80)"
+    ]
+  }
+}
