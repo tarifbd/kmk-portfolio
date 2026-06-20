@@ -281,20 +281,107 @@
       </div>
     </section>
 
-    <!-- ===== CONTACT / FOOTER ===== -->
-    <footer class="foot" id="contact">
-      <div class="foot__panel glass">
-        <p class="foot__label split-up" data-split>(Let's work together)</p>
-        <h2 class="foot__title">
-          <span class="line-mask"><span class="line" data-line>Have a project</span></span>
-          <span class="line-mask"><span class="line line--accent" data-line>in mind?</span></span>
+    <!-- ===== REQUEST A MEETING ===== -->
+    <section class="meet" id="contact">
+      <div class="meet__head">
+        <span class="meet__pill">📅 Schedule a Meeting</span>
+        <h2 class="meet__title">
+          <span class="line-mask"><span class="line" data-line>Request a</span></span>
+          <span class="line-mask"><span class="line meet__accent" data-line>Meeting</span></span>
         </h2>
-        <a class="foot__mail" href="mailto:khadimul@inception23.com">khadimul@inception23.com</a>
-        <div class="foot__bottom">
-          <span>© 2026 K M Khadimul Hasan</span>
-          <span>Dhaka, Bangladesh</span>
-          <span>Built with GSAP + Lenis</span>
+        <p class="meet__sub reveal-fade">
+          Please fill out the form below to request an appointment. My team will
+          review your request and get back to you with a confirmed slot.
+        </p>
+      </div>
+
+      <div class="meet__card reveal-fade">
+        <!-- Left: contact info -->
+        <aside class="meet__info">
+          <h3 class="meet__info-title">Contact Information</h3>
+          <div class="meet__info-list">
+            <div class="meet__info-row">
+              <span class="meet__icon">✉</span>
+              <div><p class="meet__info-label">Email</p><p class="meet__info-val">khadimul@inception23.com</p></div>
+            </div>
+            <div class="meet__info-row">
+              <span class="meet__icon">◎</span>
+              <div><p class="meet__info-label">Office</p><p class="meet__info-val">Dhaka, Bangladesh</p></div>
+            </div>
+            <div class="meet__info-row">
+              <span class="meet__icon">☎</span>
+              <div><p class="meet__info-label">Available</p><p class="meet__info-val">Remote advisory · 2026</p></div>
+            </div>
+          </div>
+          <p class="meet__quote">"Time is the most valuable asset. Let's make the most of it together."</p>
+        </aside>
+
+        <!-- Right: form -->
+        <div class="meet__form" data-meet-form>
+          <div class="meet__grid2">
+            <div class="field">
+              <label>Full Name <i>*</i></label>
+              <div class="field__box"><span class="field__ic">👤</span><input type="text" data-f="name" placeholder="Enter Your Full Name" /></div>
+            </div>
+            <div class="field">
+              <label>Email Address <i>*</i></label>
+              <div class="field__box"><span class="field__ic">✉</span><input type="email" data-f="email" placeholder="Enter Your Email Address" /></div>
+            </div>
+          </div>
+
+          <div class="meet__grid2">
+            <div class="field">
+              <label>Phone <i>*</i></label>
+              <div class="field__box"><span class="field__ic">☎</span><input type="tel" data-f="phone" placeholder="Enter Your Phone Number" /></div>
+            </div>
+            <div class="field">
+              <label>Organization <i>*</i></label>
+              <div class="field__box"><span class="field__ic">🏢</span><input type="text" data-f="org" placeholder="Enter Your Organization" /></div>
+            </div>
+          </div>
+
+          <div class="field">
+            <label>Purpose of Meeting <i>*</i></label>
+            <div class="field__box"><span class="field__ic">!</span><input type="text" data-f="purpose" placeholder="Enter Purpose of Meeting" /></div>
+          </div>
+
+          <div class="meet__grid2">
+            <div class="field">
+              <label>Meeting Type <i>*</i></label>
+              <div class="toggle" data-toggle>
+                <button type="button" class="toggle__btn is-active" data-type="Online">🎥 Online</button>
+                <button type="button" class="toggle__btn" data-type="Physical">• Physical</button>
+              </div>
+            </div>
+            <div class="field">
+              <label>Preferred Time</label>
+              <div class="field__box"><span class="field__ic">🕐</span><input type="text" data-f="time" placeholder="Enter Preferred Time" /></div>
+            </div>
+          </div>
+
+          <div class="field">
+            <label>Message <i>*</i></label>
+            <div class="field__box field__box--area"><span class="field__ic">💬</span><textarea data-f="message" rows="4" placeholder="Enter Your Message"></textarea></div>
+          </div>
+
+          <p class="meet__status" data-meet-status></p>
+          <button type="button" class="meet__submit" data-meet-submit>Submit Request <span>→</span></button>
         </div>
+      </div>
+    </section>
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="footx">
+      <div class="footx__row">
+        <span class="footx__logo">K M Khadimul<span>.</span></span>
+        <div class="footx__links">
+          <a href="#about">About</a><a href="#capabilities">Capabilities</a>
+          <a href="#projects">Work</a><a href="#contact">Contact</a>
+        </div>
+      </div>
+      <div class="footx__bottom">
+        <span>© 2026 K M Khadimul Hasan</span>
+        <span>Dhaka, Bangladesh · Built with GSAP + Lenis</span>
       </div>
     </footer>
   </main>

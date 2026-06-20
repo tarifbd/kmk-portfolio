@@ -319,7 +319,103 @@ em { font-style: italic; }
 @media (max-width: 820px) { .quotes__grid { grid-template-columns: 1fr; } }
 
 /* ============================================================
-   FOOTER / CONTACT — glass
+   REQUEST A MEETING
+   ============================================================ */
+.meet { padding: clamp(80px, 12vh, 160px) var(--gutter) clamp(60px, 9vh, 120px); }
+.meet__head { text-align: center; max-width: 720px; margin: 0 auto clamp(36px, 5vw, 64px); }
+.meet__pill { display: inline-flex; align-items: center; gap: 8px; padding: 9px 20px; border-radius: 100px;
+  background: var(--glass-strong); -webkit-backdrop-filter: var(--blur); backdrop-filter: var(--blur);
+  border: 1px solid var(--glass-brd); box-shadow: var(--glass-shadow);
+  font-family: 'Space Grotesk', monospace; font-size: 0.66rem; font-weight: 500;
+  text-transform: uppercase; letter-spacing: 0.16em; color: #2f54d4; margin-bottom: 26px; }
+.meet__title { font-family: 'Fraunces', serif; font-weight: 300; font-size: clamp(2.6rem, 7vw, 5rem);
+  line-height: 1; letter-spacing: -0.03em; }
+.meet__accent { font-style: italic;
+  background: linear-gradient(120deg, #2f5bea, #6d5cf0);
+  -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+.meet__sub { margin-top: 22px; font-size: 1rem; line-height: 1.7; color: var(--ink-2); }
+
+.meet__card {
+  display: grid; grid-template-columns: 0.85fr 1.4fr; max-width: 1120px; margin: 0 auto;
+  border-radius: 30px; overflow: hidden; background: #fff;
+  box-shadow: 0 40px 90px -40px rgba(28,40,80,0.45), inset 0 1px 0 rgba(255,255,255,0.6);
+  border: 1px solid var(--glass-brd);
+}
+
+/* Left dark panel */
+.meet__info { position: relative; padding: clamp(34px, 4vw, 56px); color: #eef0f8;
+  background: linear-gradient(160deg, #161a3e 0%, #1d1740 55%, #2a1748 100%);
+  display: flex; flex-direction: column; }
+.meet__info-title { font-family: 'Fraunces', serif; font-weight: 400; font-size: 1.6rem; color: #fff; margin-bottom: 36px; }
+.meet__info-list { display: flex; flex-direction: column; gap: 24px; }
+.meet__info-row { display: flex; align-items: center; gap: 16px; }
+.meet__icon { flex: 0 0 auto; width: 44px; height: 44px; border-radius: 12px; display: grid; place-items: center;
+  background: rgba(120,130,255,0.18); border: 1px solid rgba(150,160,255,0.25); color: #aab4ff; font-size: 1.05rem; }
+.meet__info-label { font-family: 'Space Grotesk', monospace; font-size: 0.6rem; text-transform: uppercase;
+  letter-spacing: 0.18em; color: #8a90c0; margin-bottom: 3px; }
+.meet__info-val { font-size: 0.92rem; color: #f0f2ff; font-weight: 500; }
+.meet__quote { margin-top: auto; padding-top: 40px; font-style: italic; font-size: 0.86rem; line-height: 1.6; color: rgba(200,205,240,0.6); }
+
+/* Right form */
+.meet__form { padding: clamp(30px, 3.4vw, 52px); }
+.meet__grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 18px 22px; }
+.field { margin-bottom: 20px; min-width: 0; }
+.field label { display: block; font-family: 'Space Grotesk', monospace; font-size: 0.62rem; font-weight: 500;
+  text-transform: uppercase; letter-spacing: 0.12em; color: #5a6072; margin-bottom: 9px; }
+.field label i { color: #e05a6a; font-style: normal; }
+.field__box { display: flex; align-items: center; gap: 10px; padding: 0 16px; height: 52px;
+  background: #f6f7fb; border: 1px solid #e6e8f0; border-radius: 14px; transition: border-color .2s, box-shadow .2s, background .2s; }
+.field__box--area { height: auto; align-items: flex-start; padding-top: 14px; padding-bottom: 14px; }
+.field__box:focus-within { background: #fff; border-color: #2f5bea; box-shadow: 0 0 0 4px rgba(47,91,234,0.10); }
+.field__ic { flex: 0 0 auto; color: #aab0c2; font-size: 0.95rem; line-height: 1; }
+.field__box input, .field__box textarea { flex: 1; min-width: 0; border: none; background: none; outline: none;
+  font-family: 'Inter', sans-serif; font-size: 0.92rem; color: var(--ink); resize: none; }
+.field__box input::placeholder, .field__box textarea::placeholder { color: #aab0c2; }
+
+.toggle { display: flex; gap: 12px; height: 52px; }
+.toggle__btn { flex: 1; border-radius: 14px; border: 1px solid #e6e8f0; background: #f6f7fb; cursor: pointer;
+  font-family: 'Inter', sans-serif; font-size: 0.86rem; font-weight: 600; color: #5a6072; transition: all .2s; }
+.toggle__btn.is-active { border-color: #2f5bea; background: #eef2ff; color: #2f5bea;
+  box-shadow: 0 0 0 3px rgba(47,91,234,0.08); }
+
+.meet__status { font-size: 0.85rem; margin: 4px 0 14px; min-height: 1em; }
+.meet__status.ok { color: #1a8a4a; }
+.meet__status.err { color: #d83a4a; }
+.meet__submit { width: 100%; height: 58px; border: none; border-radius: 16px; cursor: pointer;
+  display: inline-flex; align-items: center; justify-content: center; gap: 12px;
+  font-family: 'Space Grotesk', monospace; font-size: 0.82rem; font-weight: 500;
+  text-transform: uppercase; letter-spacing: 0.12em; color: #fff;
+  background: linear-gradient(100deg, #2f5bea, #5b48e8 60%, #7b46e0);
+  box-shadow: 0 18px 40px -16px rgba(47,72,232,0.6); transition: transform .25s, box-shadow .25s; }
+.meet__submit span { transition: transform .25s; }
+.meet__submit:hover { transform: translateY(-2px); box-shadow: 0 24px 50px -16px rgba(47,72,232,0.7); }
+.meet__submit:hover span { transform: translateX(5px); }
+.meet__submit:disabled { opacity: .6; cursor: default; transform: none; }
+
+@media (max-width: 880px) {
+  .meet__card { grid-template-columns: 1fr; }
+  .meet__grid2 { grid-template-columns: 1fr; }
+  .meet__quote { padding-top: 28px; }
+}
+
+/* ============================================================
+   FOOTER (slim)
+   ============================================================ */
+.footx { padding: clamp(40px, 6vw, 70px) var(--gutter); max-width: 1180px; margin: 0 auto; }
+.footx__row { display: flex; flex-wrap: wrap; gap: 20px; justify-content: space-between; align-items: center;
+  padding-bottom: 24px; border-bottom: 1px solid var(--line); }
+.footx__logo { font-family: 'Fraunces', serif; font-size: 1.3rem; color: var(--ink); }
+.footx__logo span { color: var(--gold); }
+.footx__links { display: flex; flex-wrap: wrap; gap: 26px; }
+.footx__links a { font-family: 'Space Grotesk', monospace; font-size: 0.7rem; text-transform: uppercase;
+  letter-spacing: 0.14em; color: var(--ink-2); transition: color .2s; }
+.footx__links a:hover { color: var(--ink); }
+.footx__bottom { margin-top: 22px; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 10px;
+  font-family: 'Space Grotesk', monospace; font-size: 0.62rem; text-transform: uppercase;
+  letter-spacing: 0.14em; color: var(--ink-2); }
+
+/* ============================================================
+   FOOTER / CONTACT — glass (legacy, unused)
    ============================================================ */
 .foot { padding: clamp(80px, 14vh, 200px) var(--gutter) 40px; }
 .foot__panel { border-radius: 30px; padding: clamp(40px, 6vw, 90px); }

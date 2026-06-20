@@ -196,7 +196,62 @@ document.querySelector('[data-menu-close]').addEventListener('click', closeMenu)
 document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeMenu(); });
 
 /* ============================================================
-   8. BOOT
+   8. REQUEST-A-MEETING FORM (static: validate + mailto)
+   ============================================================ */
+function initMeetingForm() {
+  const form = document.querySelector('[data-meet-form]');
+  if (!form) return;
+
+  let meetingType = 'Online';
+  const toggle = form.querySelector('[data-toggle]');
+  if (toggle) {
+    toggle.querySelectorAll('.toggle__btn').forEach((btn) => {
+      btn.addEventListener('click', () => {
+        toggle.querySelectorAll('.toggle__btn').forEach((b) => b.classList.remove('is-active'));
+        btn.classList.add('is-active');
+        meetingType = btn.dataset.type;
+      });
+    });
+  }
+
+  const status = form.querySelector('[data-meet-status]');
+  const submit = form.querySelector('[data-meet-submit]');
+  const val = (k) => (form.querySelector(`[data-f="${k}"]`)?.value || '').trim();
+
+  submit.addEventListener('click', () => {
+    status.className = 'meet__status';
+    status.textContent = '';
+
+    const name = val('name'), email = val('email'), phone = val('phone'),
+      org = val('org'), purpose = val('purpose'), message = val('message');
+
+    if (!name || !email || !phone || !org || !purpose || !message) {
+      status.classList.add('err');
+      status.textContent = 'Please fill in all required fields.';
+      return;
+    }
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      status.classList.add('err');
+      status.textContent = 'Please enter a valid email address.';
+      return;
+    }
+
+    const subject = `Meeting Request — ${name} (${purpose})`;
+    const body =
+      `Name: ${name}\nEmail: ${email}\nPhone: ${phone}\nOrganization: ${org}\n` +
+      `Purpose: ${purpose}\nMeeting Type: ${meetingType}\nPreferred Time: ${val('time') || '—'}\n\n` +
+      `Message:\n${message}`;
+
+    window.location.href =
+      `mailto:khadimul@inception23.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+
+    status.classList.add('ok');
+    status.textContent = 'Opening your email app to send the request…';
+  });
+}
+
+/* ============================================================
+   9. BOOT
    ============================================================ */
 function init() {
   if (!prefersReduced) {
@@ -206,6 +261,7 @@ function init() {
     initHorizontal();
     initPointerFX();
   }
+  initMeetingForm();
   ScrollTrigger.refresh();
 }
 
